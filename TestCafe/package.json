@@ -1,6 +1,7 @@
 {
     "scripts": {
-        "testDemo": "testcafe chrome tests/Session1/firstTest.js"},
+        "testDemo": "testcafe chrome tests/Session1/firstTest.js",
+        "testvocana": "testcafe chrome tests/Session1/tests.js --debug-mode"},
 
     "dependencies": {
         "testcafe": "3.5.0"
