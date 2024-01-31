@@ -1,4 +1,4 @@
-Tests for Vocana
+# Tests for Vocana
 
 ## Running tests
 Tests can be run from TestCafe folder with command:
