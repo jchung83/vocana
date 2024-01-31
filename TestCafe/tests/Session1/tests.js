@@ -29,7 +29,7 @@ fixture ('Tests Vocana')
     const createPost = Selector('span').withText('Create Post');
     const textareaElement = Selector('textarea.mb-4.h-40.w-full.rounded.border-b.border-turquoise.bg-cobalt-22.pl-1.focus\\:border-turquoise');
 
-    //Template begins here
+    //Test template begins here
 
      test( "Profile new post no img", async t => {
     
@@ -54,7 +54,7 @@ fixture ('Tests Vocana')
 
     });
 
-
+    //Ends here
   
     test( "Profile new post with img", async t => {
         
@@ -81,5 +81,34 @@ fixture ('Tests Vocana')
         //Validate
         await t
             .expect(Selector('span').withText(datedTestText).exists).ok();
+
+    });
+
+    
+    test( "Artist search", async t => {
+    
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+
+        //Actual test begins
+
+        await t
+            .click('a[aria-label="Navigate to Search"]')
+            .typeText('input[placeholder="Search..."]', "empire")
+            .click('button[aria-label="Search"]');
+
+            console.log(datedTestText);
+        //Validate
+        await t
+            .expect(Selector('span').withText("Hidden Empire").exists).ok();
+
+        //Apply filter
+        await t
+        .click('div[class="dropdown-container rounded flex items-center h-12 w-full cursor-pointer bg-cobalt-33 px-4 text-white"]')
+        .click(Selector('li[class="dropdown-option relative cursor-pointer bg-black px-4 py-2 font-normal text-white hover:bg-cobalt-33 focus:bg-cobalt-33"]').withText("Fan account"));
+
+        //Validate
+        await t
+        .expect(Selector('span').withText("No results found for").exists).ok();
+        
 
     });
