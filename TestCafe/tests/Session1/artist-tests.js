@@ -11,7 +11,7 @@ fixture ('Tests Vocana')
         const botonLogIn = Selector('.btn.btn-principal-pseudo-classes.btn-purple-57.btn-large.w-full');
     
         await t
-            .resizeWindow(1600, 700)
+            .resizeWindow(1600, 720)
             .typeText(email, 'jchung@sparxworks.com')
             .typeText(password, 'Aa.123456')
             .click(botonLogIn);
