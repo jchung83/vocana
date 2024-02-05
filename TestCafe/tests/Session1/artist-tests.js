@@ -112,3 +112,55 @@ fixture ('Tests Vocana')
         
 
     });
+
+
+    test( "Search for song, play it, test controls", async t => {
+    
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+
+        //Actual test begins
+
+        await t
+            .click('a[aria-label="Navigate to Search"]')
+            .typeText('input[placeholder="Search..."]', "smoke empire")
+            .click('button[aria-label="Search"]')
+            .click('img[alt="Smoke Empire"]')
+            
+        //Validate song footer controls exists
+            .expect(Selector('span[class="w-32 truncate font-bold sm:w-56 lg:w-36"]').withText("Smoke Empire").exists).ok()
+
+        //Play song for 1 second, then test control icons
+            .click('img[alt="Smoke Empire"]')
+            .expect(Selector('#rhap_current-time').withText("00:01").exists).ok()
+            
+            //Add to favorites
+            .click('button[aria-label="Add song to favorites"]')
+            .expect(Selector('svg[class="icon icon-active-heart ml-2 fill-current transition duration-300 group-hover:text-purple-39"]').exists).ok()
+            .click('button[aria-label="Add song to favorites"]')
+            .expect(Selector('svg[class="icon icon-hover-heart ml-2 fill-current transition duration-300 group-hover:text-purple-39"]').exists).ok()
+
+            //Add artist
+            .click('button[aria-label="Add Artist"]')
+            .expect(Selector('svg[class="icon icon-add-artist-active ml-4 fill-current transition duration-300 group-hover:text-purple-39"]').exists).ok()
+            .click('button[aria-label="Add Artist"]')
+            .expect(Selector('svg[class="icon icon-add-artist ml-4 fill-current transition duration-300 group-hover:text-purple-39"]').exists).ok()
+
+            //Shuffle
+
+
+            //Previous
+            //Next
+            //PlayPause
+            .click('button[aria-label="Pause"]')
+            .click('button[aria-label="Play"]')
+
+            //Loop
+            .click('button[aria-label="Enable loop"]')
+            .click('button[aria-label="Disable loop"]')
+
+            //Mute unmute
+            .click('button[aria-label="Mute"]')
+            .click('button[aria-label="Unmute"]')
+            .click('button[aria-label="Pause"]');
+
+    });
