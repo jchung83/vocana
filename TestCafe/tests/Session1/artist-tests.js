@@ -164,3 +164,22 @@ fixture ('Tests Vocana')
             .click('button[aria-label="Pause"]');
 
     });
+
+    test( "Profile palette", async t => {
+        
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+
+        //Actual test begins
+
+        await t
+            .click(profile)
+            .click('button[aria-label="Edit Profile"]')
+            .click('#1A2439#ffffff');
+
+
+        //Validate
+ //       await t
+//            .expect(Selector('span').withText(datedTestText).exists).ok();
+
+    });
+
