@@ -96,6 +96,19 @@ fixture ('Tests Vocana')
 
         .click(Selector('#tabpanel-2 > div > div:nth-child(4)'))
         .click(Selector('#tabpanel-2 > div > div.szh-accordion__item.szh-accordion__item--status-entered.szh-accordion__item--expanded.group'))
+
+        //Terms & Conditions
+            .click(Selector('#tabpanel-2 > div > div:nth-child(1)'))
+            //History version 
+            .click(Selector('#contentAccordion > div:nth-child(2) > div > div.flex.flex-row.gap-4 > button.btn.btn-large.disabled\\:\\!bg-cobalt-33.disabled\\:text-white-67.btn-cobalt-33.hover\\:bg-purple-57'))
+            .expect(Selector('#contentAccordion > div:nth-child(2) > div > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.z-\\[100\\].max-h-\\[80\\%\\] > div > div.body > div').exists).ok()
+            .click(Selector('#contentAccordion > div:nth-child(2) > div > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.z-\\[100\\].max-h-\\[80\\%\\] > button > svg')) 
+            //Edit text
+            .click(Selector('#contentAccordion > div:nth-child(2) > div > button'))
+            .click(Selector('#contentAccordion > div.bg-cobalt-16 > div.mx-5.flex.flex-row.items-center.justify-between.border-b.border-cobalt-33.pb-4.pt-5 > div:nth-child(3) > button.btn.btn-large.btn-cobalt-33.hover\\:bg-purple-57'))
+            .click(Selector('#contentAccordion > div:nth-child(2) > div > button'))
+            .typeText(Selector('div > div.editor-class.rdw-editor-main > div > div > div > div > div > div > span > span'), datedTestText + 'Terms & Conditions')
+            .click(Selector('#contentAccordion > div.bg-cobalt-16 > div.mx-5.flex.flex-row.items-center.justify-between.border-b.border-cobalt-33.pb-4.pt-5 > div:nth-child(3) > button.btn.btn-large.btn-purple-57 > span'))  
         ;
     });
 
