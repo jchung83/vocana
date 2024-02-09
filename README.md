@@ -24,6 +24,13 @@ Run with `fan-tests` as the test name.
 
 - [ ] abc
 
+### Admin account tests
+Run with `admin-tests` as the test name.
+
+#### Internal Manager operation tests
+- [x] Access Manager tests
+- [x] Vocana Documents tests (WIP)
+
 ### Account creation tests
 Run with `account-tests` as the test name.
 
