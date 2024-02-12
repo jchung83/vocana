@@ -144,3 +144,15 @@ fixture ('Tests Vocana')
         ;
     });
 
+    test( "User Manager", async t => {
+
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+
+        //Actual test begins
+
+        await t
+            .click(usermanager)
+            .typeText(Selector('#tabpanel-0 > div > div.flex.w-full.flex-row.items-center.justify-between.pb-5 > div.flex.gap-4 > div > input'), "anabel")
+            .click(Selector('#tabpanel-0 > div > div.flex.w-full.flex-row.items-center.justify-between.pb-5 > div.flex.gap-4 > button'))
+        ;
+    });

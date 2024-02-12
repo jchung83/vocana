@@ -31,7 +31,7 @@ Run with `admin-tests` as the test name.
 - [x] Access Manager tests
 - [x] Vocana Documents tests
 
-#### Use Manager operation tests
+#### User Manager operation tests
 - [ ] Vocana Users tests
 
 ### Account creation tests
