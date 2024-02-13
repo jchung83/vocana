@@ -29,7 +29,10 @@ Run with `admin-tests` as the test name.
 
 #### Internal Manager operation tests
 - [x] Access Manager tests
-- [x] Vocana Documents tests (WIP)
+- [x] Vocana Documents tests
+
+#### User Manager operation tests
+- [ ] Vocana Users tests
 
 ### Account creation tests
 Run with `account-tests` as the test name.

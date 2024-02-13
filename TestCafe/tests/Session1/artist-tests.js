@@ -31,7 +31,7 @@ fixture ('Tests Vocana')
 
     //Test template begins here
 
-     test( "Profile new post no img", async t => {
+    test( "Profile new post no img", async t => {
     
         let datedTestText = t.testRun.test.name + " " + fullDate;
 
@@ -55,7 +55,7 @@ fixture ('Tests Vocana')
     });
 
     //Ends here
-  
+
     test( "Profile new post with img", async t => {
         
         let datedTestText = t.testRun.test.name + " " + fullDate;
