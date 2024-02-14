@@ -152,7 +152,28 @@ fixture ('Tests Vocana')
 
         await t
             .click(usermanager)
+
+            //Validate list populates correctly
+            .expect(Selector('td').withText("@hotmail.com").exists).ok()
+
+            //Count TRs populating
+            .expect(Selector('tr[class="cursor-pointer transition duration-75 odd:bg-cobalt-16 even:bg-cobalt-22 hover:bg-cobalt-33"]').count).eql(8)
+
+            /*
+            //Validate scrolling populates correctly
+            .hover(Selector('#tabpanel-0 > div > div.h-full.max-h-\\[44vh\\].overflow-auto.lg\\:max-h-\\[62vh\\] > table > tbody > tr:nth-child(1) > td:nth-child(1) > div > span'))
+            .wait(1000)
+            .scrollBy(800, 0)
+            .expect(Selector('tr[class="cursor-pointer transition duration-75 odd:bg-cobalt-16 even:bg-cobalt-22 hover:bg-cobalt-33"]').count).eql(16)
+            */
+
+            //Test search box
             .typeText(Selector('#tabpanel-0 > div > div.flex.w-full.flex-row.items-center.justify-between.pb-5 > div.flex.gap-4 > div > input'), "anabel")
             .click(Selector('#tabpanel-0 > div > div.flex.w-full.flex-row.items-center.justify-between.pb-5 > div.flex.gap-4 > button'))
+            
+            //Validate other users disappear while search complies
+            .expect(Selector('td').withText("valprit01@hotmail.com").count).eql(0)
+            .expect(Selector('td').withText("anabel_once@gmail.com").exists).ok()
+
         ;
     });

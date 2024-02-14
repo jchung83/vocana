@@ -12,7 +12,7 @@ fixture ('Tests Vocana')
     
         await t
             .resizeWindow(1600, 720)
-            .typeText(email, 'jchung@sparxworks.com')
+            .typeText(email, 'artist@artist.com')
             .typeText(password, 'Aa.123456')
             .click(botonLogIn);
     });
