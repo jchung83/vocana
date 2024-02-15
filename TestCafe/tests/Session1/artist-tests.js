@@ -210,3 +210,47 @@ fixture ('Tests Vocana')
             .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #e1fcff')
             ;
     });
+
+    test( "Concerts tests", async t => {
+    
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+
+        //Actual test begins
+
+        await t
+
+        //Creating a concert
+            .click('a[aria-label="Navigate to Concerts"]')
+            .click('button[aria-label="create-concert"]')
+            //Title
+            .typeText('#title', datedTestText)
+            //Date
+            .click('#concert-date-input')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(2) > div > div > span > div > div > div.react-calendar__navigation > button.react-calendar__navigation__arrow.react-calendar__navigation__next-button')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(2) > div > div > span > div > div > div.react-calendar__viewContainer > div > div > div > div.react-calendar__month-view__days > button:nth-child(19)')
+            //Start time  
+            .typeText('#start-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__hour', "10")
+            .typeText('#start-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__minute', "30")
+            .typeText('#start-time > div > div > select', "PM")
+            //End time  
+            .typeText('#end-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__hour', "11")
+            .typeText('#end-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__minute', "30")
+            .typeText('#end-time > div > div > select', "PM")
+            //Precio  
+            .typeText('#price', "110.55")
+            //Ticket URL  
+            .typeText('#ticketUrl', "google.com")
+            //Venue name  
+            .typeText('#venueName', "Test Venue")
+            //Venue address
+            .typeText('#venueAddress', "Test Address")
+            //Country
+            .typeText('#countries', "United States")
+            //State  
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div')
+            .click('#countries > option:nth-child(9)')
+            .wait(3000)
+
+
+            ;
+    });
