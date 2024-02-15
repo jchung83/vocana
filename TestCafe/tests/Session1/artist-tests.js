@@ -166,6 +166,27 @@ fixture ('Tests Vocana')
 
     });
 
+    test( "Profile background", async t => {
+        
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+
+        //Actual test begins
+
+        await t
+            .click(profile)
+            .click('#imgContent > button[aria-label="Edit Profile"]')
+            .click('label[for="#d7dae8"]')
+            .expect(Selector('html').getAttribute('style')).contains('background-color: #d7dae8')
+            .click('label[for="#d2d173"]')
+            .expect(Selector('html').getAttribute('style')).contains('background-color: #d2d173')
+            .click('label[for="#d7dae8"]')
+            .expect(Selector('html').getAttribute('style')).contains('background-color: #d7dae8')
+            .click('label[for="#d2d173"]')
+            .expect(Selector('html').getAttribute('style')).contains('background-color: #d2d173')
+            ;
+    });
+
+    
     test( "Profile palette", async t => {
         
         let datedTestText = t.testRun.test.name + " " + fullDate;
@@ -175,12 +196,17 @@ fixture ('Tests Vocana')
         await t
             .click(profile)
             .click('#imgContent > button[aria-label="Edit Profile"]')
-            .click('#1A2439#ffffff');
-
-
-        //Validate
- //       await t
-//            .expect(Selector('span').withText(datedTestText).exists).ok();
-
+            .click('label[for="#54533c#fbf2ef"]')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-box: #54533c')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #fbf2ef')
+            .click('label[for="#384042#e1fcff"]')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-box: #384042')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #e1fcff')
+            .click('label[for="#54533c#fbf2ef"]')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-box: #54533c')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #fbf2ef')
+            .click('label[for="#384042#e1fcff"]')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-box: #384042')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #e1fcff')
+            ;
     });
-
