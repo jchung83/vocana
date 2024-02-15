@@ -174,6 +174,7 @@ fixture ('Tests Vocana')
             //Validate other users disappear while search complies
             .expect(Selector('td').withText("valprit01@hotmail.com").count).eql(0)
             .expect(Selector('td').withText("anabel_once@gmail.com").exists).ok()
+            .click(Selector('#tabpanel-0 > div > div.h-full.max-h-\\[44vh\\].overflow-auto.lg\\:max-h-\\[62vh\\] > table > tbody > tr:nth-child(1)'))
 
         ;
     });
