@@ -99,6 +99,7 @@ fixture ('Tests Vocana')
             console.log(datedTestText);
         //Validate
         await t
+            .wait(2000)
             .expect(Selector('span').withText("Hidden Empire").exists).ok();
 
         //Apply filter
@@ -173,7 +174,7 @@ fixture ('Tests Vocana')
 
         await t
             .click(profile)
-            .click('button[aria-label="Edit Profile"]')
+            .click('#imgContent > button[aria-label="Edit Profile"]')
             .click('#1A2439#ffffff');
 
 
