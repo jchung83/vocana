@@ -211,7 +211,7 @@ fixture ('Tests Vocana')
             ;
     });
 
-    test( "Concerts tests", async t => {
+    test( "Create concert", async t => {
     
         let datedTestText = t.testRun.test.name + " " + fullDate;
 
@@ -219,7 +219,7 @@ fixture ('Tests Vocana')
 
         await t
 
-        //Creating a concert
+        //Creating a concert draft
             .click('a[aria-label="Navigate to Concerts"]')
             .click('button[aria-label="create-concert"]')
             //Title
@@ -245,12 +245,21 @@ fixture ('Tests Vocana')
             //Venue address
             .typeText('#venueAddress', "Test Address")
             //Country
-            .typeText('#countries', "United States")
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select'))
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').find('option').withText('United States'))
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').value).eql('233')
             //State  
-            .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div')
-            .click('#countries > option:nth-child(9)')
-            .wait(3000)
-
-
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select'))
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').find('option').withText('Colorado'))
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').value).eql('1450')
+            //Venue link
+            .typeText('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(11) > div > div.input.flex.items-center.p-3 > input', "google.com")
+            //Info
+            .typeText('#text-area-concert-info', "Concert info test")
+            //Save draft
+            .click('button[aria-label="saveDraft"]')
+            .wait(10000)
+            //Now let's check that concert exists
+            .click('a[aria-label="Navigate to Concerts"]')          
             ;
     });
