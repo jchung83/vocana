@@ -99,6 +99,7 @@ fixture ('Tests Vocana')
             console.log(datedTestText);
         //Validate
         await t
+            .wait(2000)
             .expect(Selector('span').withText("Hidden Empire").exists).ok();
 
         //Apply filter
@@ -165,6 +166,27 @@ fixture ('Tests Vocana')
 
     });
 
+    test( "Profile background", async t => {
+        
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+
+        //Actual test begins
+
+        await t
+            .click(profile)
+            .click('#imgContent > button[aria-label="Edit Profile"]')
+            .click('label[for="#d7dae8"]')
+            .expect(Selector('html').getAttribute('style')).contains('background-color: #d7dae8')
+            .click('label[for="#d2d173"]')
+            .expect(Selector('html').getAttribute('style')).contains('background-color: #d2d173')
+            .click('label[for="#d7dae8"]')
+            .expect(Selector('html').getAttribute('style')).contains('background-color: #d7dae8')
+            .click('label[for="#d2d173"]')
+            .expect(Selector('html').getAttribute('style')).contains('background-color: #d2d173')
+            ;
+    });
+
+    
     test( "Profile palette", async t => {
         
         let datedTestText = t.testRun.test.name + " " + fullDate;
@@ -173,13 +195,71 @@ fixture ('Tests Vocana')
 
         await t
             .click(profile)
-            .click('button[aria-label="Edit Profile"]')
-            .click('#1A2439#ffffff');
-
-
-        //Validate
- //       await t
-//            .expect(Selector('span').withText(datedTestText).exists).ok();
-
+            .click('#imgContent > button[aria-label="Edit Profile"]')
+            .click('label[for="#54533c#fbf2ef"]')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-box: #54533c')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #fbf2ef')
+            .click('label[for="#384042#e1fcff"]')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-box: #384042')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #e1fcff')
+            .click('label[for="#54533c#fbf2ef"]')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-box: #54533c')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #fbf2ef')
+            .click('label[for="#384042#e1fcff"]')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-box: #384042')
+            .expect(Selector('html').getAttribute('style')).contains('colour-palette-text: #e1fcff')
+            ;
     });
 
+    test( "Create concert", async t => {
+    
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+
+        //Actual test begins
+
+        await t
+
+        //Creating a concert draft
+            .click('a[aria-label="Navigate to Concerts"]')
+            .click('button[aria-label="create-concert"]')
+            //Title
+            .typeText('#title', datedTestText)
+            //Date
+            .click('#concert-date-input')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(2) > div > div > span > div > div > div.react-calendar__navigation > button.react-calendar__navigation__arrow.react-calendar__navigation__next-button')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(2) > div > div > span > div > div > div.react-calendar__viewContainer > div > div > div > div.react-calendar__month-view__days > button:nth-child(19)')
+            //Start time  
+            .typeText('#start-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__hour', "10")
+            .typeText('#start-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__minute', "30")
+            .typeText('#start-time > div > div > select', "PM")
+            //End time  
+            .typeText('#end-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__hour', "11")
+            .typeText('#end-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__minute', "30")
+            .typeText('#end-time > div > div > select', "PM")
+            //Precio  
+            .typeText('#price', "110.55")
+            //Ticket URL  
+            .typeText('#ticketUrl', "google.com")
+            //Venue name  
+            .typeText('#venueName', "Test Venue")
+            //Venue address
+            .typeText('#venueAddress', "Test Address")
+            //Country
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select'))
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').find('option').withText('United States'))
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').value).eql('233')
+            //State  
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select'))
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').find('option').withText('Colorado'))
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').value).eql('1450')
+            //Venue link
+            .typeText('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(11) > div > div.input.flex.items-center.p-3 > input', "google.com")
+            //Info
+            .typeText('#text-area-concert-info', "Concert info test")
+            //Save draft
+            .click('button[aria-label="saveDraft"]')
+            .wait(10000)
+            //Now let's check that concert exists
+            .click('a[aria-label="Navigate to Concerts"]')          
+            ;
+    });
