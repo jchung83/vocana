@@ -70,8 +70,9 @@ fixture ('Tests Vocana')
         const selectImg = Selector('button[class="fill-white hover:fill-turquoise"]');
 
         await t
-            .click(selectImg)
-            .wait(20000);
+        .setFilesToUpload('body > main > div.pageBaseWrapper > div > div > div > div > main > section.profile__secondary-information > section.col-span-3.grid.gap-1\\.5.lg\\:gap-5 > section.dynamic-background-color.h-52.rounded-lg.p-3.lg\\:px-4.lg\\:py-5 > div > div.modalComponent.visible > div.customModal.modalWithImgProfile.undefined > div > div.body > div > input[type=file]', ['./bart.png'])
+    //        .click(selectImg)
+    //        .wait(20000);
 
         const publishPost = Selector('button[aria-label="Post"]');
 
