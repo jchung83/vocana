@@ -71,9 +71,7 @@ fixture ('Tests Vocana')
 
         await t
         .setFilesToUpload('body > main > div.pageBaseWrapper > div > div > div > div > main > section.profile__secondary-information > section.col-span-3.grid.gap-1\\.5.lg\\:gap-5 > section.dynamic-background-color.h-52.rounded-lg.p-3.lg\\:px-4.lg\\:py-5 > div > div.modalComponent.visible > div.customModal.modalWithImgProfile.undefined > div > div.body > div > input[type=file]', ['./bart.png'])
-    //        .click(selectImg)
-    //        .wait(20000);
-
+        .wait(3000)
         const publishPost = Selector('button[aria-label="Post"]');
 
         await t
@@ -81,8 +79,8 @@ fixture ('Tests Vocana')
 
         //Validate
         await t
-            .expect(Selector('span').withText(datedTestText).exists).ok();
-
+            .expect(Selector('span').withText(datedTestText).exists).ok()
+        ;
     });
 
     
@@ -225,6 +223,12 @@ fixture ('Tests Vocana')
             .click('button[aria-label="create-concert"]')
             //Title
             .typeText('#title', datedTestText)
+            //Imagen principal
+            .setFilesToUpload('input[name="concert-image"]', ['./bart.png'])
+            .wait(1000)
+            //Banner
+            .setFilesToUpload('input[name="concert-banner"]', ['./testbanner2.JPEG'])
+            .wait(1000)
             //Date
             .click('#concert-date-input')
             .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(2) > div > div > span > div > div > div.react-calendar__navigation > button.react-calendar__navigation__arrow.react-calendar__navigation__next-button')
@@ -240,7 +244,7 @@ fixture ('Tests Vocana')
             //Precio  
             .typeText('#price', "110.55")
             //Ticket URL  
-            .typeText('#ticketUrl', "google.com")
+            .typeText('#ticketUrl', "https://google.com")
             //Venue name  
             .typeText('#venueName', "Test Venue")
             //Venue address
@@ -248,19 +252,40 @@ fixture ('Tests Vocana')
             //Country
             .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select'))
             .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').find('option').withText('United States'))
-            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').value).eql('233')
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').value).eql('232')
             //State  
             .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select'))
             .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').find('option').withText('Colorado'))
-            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').value).eql('1450')
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').value).eql('7')
             //Venue link
-            .typeText('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(11) > div > div.input.flex.items-center.p-3 > input', "google.com")
+            .typeText('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(11) > div > div.input.flex.items-center.p-3 > input', "https://google.com")
             //Info
             .typeText('#text-area-concert-info', "Concert info test")
             //Save draft
             .click('button[aria-label="saveDraft"]')
-            .wait(10000)
+            .wait(3000)
             //Now let's check that concert exists
-            .click('a[aria-label="Navigate to Concerts"]')          
+            .click('a[aria-label="Navigate to Concerts"]')   
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > section:nth-child(2) > button:nth-child(2) > div > span.flex > div.ml-5.text-left > p.font-body-extrabold').withText(datedTestText).exists).ok()
+            //Draft exists no we go into draft and publish
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > section:nth-child(2) > button:nth-child(2) > div > span.flex > div.ml-5.text-left > p.font-body-extrabold')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div.flex.items-center.gap-4 > button:nth-child(6) > span')
+            .wait(2000)
+            //Check if it's published in the correct section
+            .click('a[aria-label="Navigate to Concerts"]')
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > section:nth-child(3) > button:nth-child(2) > div > span.flex > div.ml-5.text-left > p.font-body-extrabold').withText(datedTestText).exists).ok()
+            //Let's unpublish
+            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > section:nth-child(3) > button:nth-child(2) > div > span.flex > div.ml-5.text-left > p.font-body-extrabold').withText(datedTestText))
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > section.relative.overflow-hidden.rounded > button.absolute.right-0.z-20.m-3.rounded-full.bg-cobalt-22.p-1')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div.flex.items-center.gap-4 > button:nth-child(6) > span')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.flex.items-center.text-center > div > button > span')
+            .wait(3000)
+            //Check if it's unpublished
+            .click('a[aria-label="Navigate to Concerts"]')   
+            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > section:nth-child(2) > button:nth-child(2) > div > span.flex > div.ml-5.text-left > p.font-body-extrabold').withText(datedTestText).exists).ok()
+            //Now let's delete it
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > section:nth-child(2) > button:nth-child(2) > div > span.flex > div.ml-5.text-left > p.font-body-extrabold')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div.flex.items-center.gap-4 > button:nth-child(5) > span')
+            .click('body > main > div.pageBaseWrapper > div > div > div > div > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.flex.items-center.text-center > div > button > span')  
             ;
     });
