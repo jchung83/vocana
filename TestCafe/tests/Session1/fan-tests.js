@@ -82,7 +82,18 @@ fixture ('Tests Vocana')
             .expect(Selector('span').withText('Smoke Empire').count).eql(2)
             .expect(Selector('span').withText('Mempireo').count).eql(2)
             //Edit playlist
-            .click('.body > main > div.pageBaseWrapper > div > div > div > section > section > div.flex.px-4.py-7.justify-between > div.flex.flex-row > button:nth-child(1)')
-
+            .click('body > main > div.pageBaseWrapper > div > div > div > section > section > div.flex.px-4.py-7.justify-between > div.flex.flex-row > button:nth-child(1)')
+            //Remove an item
+            .click('body > main > div.pageBaseWrapper > div > div > div > section > section > div.flex.px-4.py-7.justify-between > div.flex.flex-row > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button > svg')
+            .expect(Selector('span').withText('Mempireo').count).eql(0)
+            .wait(3000)
+            //Re add an item
+            .typeText('div.relative.rounded.text-white.mb-4 > #input-search[placeholder="Search..."]', "mempir")
+            .pressKey('enter')
+            .wait(2000)
+            .expect(Selector('span').withText('Mempireo').exists).ok()
+            .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+            .wait(10000)
+            .expect(Selector('svg[class="icon icon-remove-playlist undefined"]').exists).ok()
     ;
     });
