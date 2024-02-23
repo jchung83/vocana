@@ -36,13 +36,14 @@ fixture ('Tests Vocana')
             //Creating playlist
             .click('a[aria-label="Navigate to Music"]')
             .click('button[aria-label="Library"]')
+            
             .click('button[aria-label="Create"]')
             .typeText('input[placeholder="Your Playlist Name"]', datedTestText)
             .setFilesToUpload('#input-file-create-playlist', ['./bart.png'])
             //Populating with songs
             .typeText('div.relative.rounded.text-white.mb-4 > #input-search[placeholder="Search..."]', "Smoke Emp")
             .pressKey('enter')
-            .wait(2000)
+            .wait(3000)
             .expect(Selector('span').withText('Smoke Empire').exists).ok()
             .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
             //Verify icon changes to -
@@ -52,7 +53,7 @@ fixture ('Tests Vocana')
             //Search for and add a 2nd song
             .typeText('div.relative.rounded.text-white.mb-4 > #input-search[placeholder="Search..."]', "mempir")
             .pressKey('enter')
-            .wait(2000)
+            .wait(3000)
             .expect(Selector('span').withText('Mempireo').exists).ok()
             .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
             //Verify icon changes to -           
@@ -66,10 +67,13 @@ fixture ('Tests Vocana')
             //Re-add to playlist
             .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
 */
+
             //Save playlist
             .click('button[aria-label="Save"]')
             //Go inside playlist
             .click(Selector('span').withText(datedTestText))
+
+
             //Test playlist search
             .typeText('#input-search[placeholder="Search..."]', 'mempi')
             .click('button[aria-label="Search"]')
@@ -90,10 +94,64 @@ fixture ('Tests Vocana')
             //Re add an item
             .typeText('div.relative.rounded.text-white.mb-4 > #input-search[placeholder="Search..."]', "mempir")
             .pressKey('enter')
-            .wait(2000)
+            .wait(3000)
             .expect(Selector('span').withText('Mempireo').exists).ok()
             .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
-            .wait(10000)
+            .wait(3000)
             .expect(Selector('svg[class="icon icon-remove-playlist undefined"]').exists).ok()
-    ;
+            //Add more songs to test shuffle function
+                //Reset search add (third song)
+                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.relative.rounded.text-white.mb-4 > button > svg')
+                .wait(3000)
+                .typeText('div.relative.rounded.text-white.mb-4 > #input-search[placeholder="Search..."]', "cosmic karma")
+                .pressKey('enter')
+                .wait(3000)
+                .expect(Selector('span').withText('Cosmic Karma').exists).ok()
+                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+                .wait(3000)
+                
+                //Reset search add (fourth song)
+                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.relative.rounded.text-white.mb-4 > button > svg')
+                .wait(3000)
+                .typeText('div.relative.rounded.text-white.mb-4 > #input-search[placeholder="Search..."]', "pink Tears in a joyful")
+                .pressKey('enter')
+                .wait(3000)
+                .expect(Selector('span').withText('Pink Tears in a Joyful Sunshine').exists).ok()
+                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+                .wait(3000)
+                
+                //Reset search add (fifth song)
+                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.relative.rounded.text-white.mb-4 > button > svg')
+                .wait(3000)
+                .typeText('div.relative.rounded.text-white.mb-4 > #input-search[placeholder="Search..."]', "acting on a hunch")
+                .pressKey('enter')
+                .wait(3000)
+                .expect(Selector('span').withText('Acting On A Hunch').exists).ok()
+                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+                .wait(3000)
+            //Close modal
+            .click('div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > button[aria-label="Close"]')
+
+
+            
+            // !TEMP Go inside playlist
+//            .click(Selector('span').withText(datedTestText))
+
+            //Play playlist
+            .click('div.flex.px-4.py-7.justify-between > div.flex.gap-4.self-end > button:nth-child(3)')
+            .wait(1500)
+            .expect(Selector('#rhap_current-time').withText('00:02').exists).ok()
+            //Mute this please
+            .click('button[aria-label="Mute"]')
+            //Shuffle
+            .click('div.flex.px-4.py-7.justify-between > div.flex.gap-4.self-end > button:nth-child(2)')
+            //Open queue
+            .click('body > main > div.pageBaseWrapper > div > div > div.audio.fixed.bottom-0.z-\\[2\\].flex.min-h-\\[80px\\].w-full.flex-row.justify-between.bg-cobalt-22.px-2 > div.container-player-icon-buttons.w-1\\/3.pr-3.text-white > div > div:nth-child(10) > button')
+            .wait(2000)
+            //Loads correct amount of elements?
+            .expect(Selector('section > div[class="flex w-full min-w-[250px] justify-between border-b-[1px] border-cobalt-33 px-2 py-3 "]').count).eql(4)
+            //Is it actually shuffled??
+
+            .wait(3000)
+            ;
     });
