@@ -23,7 +23,7 @@ Current tests, in order, include:
 ### Fan account tests
 Run with `fan-tests` as the test name.
 
-- [x] Creating and managing playlists [WIP]
+- [x] Creating and managing playlists
 
 ### Admin account tests
 Run with `admin-tests` as the test name.
