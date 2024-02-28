@@ -45,7 +45,7 @@ fixture ('Tests Vocana')
             .pressKey('enter')
             .wait(3000)
             .expect(Selector('span').withText('Smoke Empire').exists).ok()
-            .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+            .click('div:nth-child(2) > div.flex.items-center.gap-5 > button[aria-label="Add/remove song"]')
             //Verify icon changes to -
             .expect(Selector('svg[class="icon icon-remove-playlist undefined"]').exists).ok()
             //Clean search field
@@ -55,7 +55,7 @@ fixture ('Tests Vocana')
             .pressKey('enter')
             .wait(3000)
             .expect(Selector('span').withText('Mempireo').exists).ok()
-            .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+            .click('div:nth-child(2) > div.flex.items-center.gap-5 > button[aria-label="Add/remove song"]')
             //Verify icon changes to -           
             .expect(Selector('svg[class="icon icon-remove-playlist undefined"]').exists).ok()
 /*
@@ -65,7 +65,7 @@ fixture ('Tests Vocana')
             //Verify - icon dissappears
             .expect(Selector('svg[class="icon icon-remove-playlist undefined"]').count).eql(0)
             //Re-add to playlist
-            .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+            .click('div:nth-child(2) > div.flex.items-center.gap-5 > button[aria-label="Add/remove song"]')
 */
 
             //Save playlist
@@ -88,7 +88,7 @@ fixture ('Tests Vocana')
             //Edit playlist
             .click('body > main > div.pageBaseWrapper > div > div > div > section > section > div.flex.px-4.py-7.justify-between > div.flex.flex-row > button:nth-child(1)')
             //Remove an item
-            .click('body > main > div.pageBaseWrapper > div > div > div > section > section > div.flex.px-4.py-7.justify-between > div.flex.flex-row > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button > svg')
+            .click('div:nth-child(2) > div.flex.items-center.gap-5 > button[aria-label="Add/remove song"] > svg')
             .expect(Selector('span').withText('Mempireo').count).eql(0)
             .wait(3000)
             //Re add an item
@@ -96,7 +96,7 @@ fixture ('Tests Vocana')
             .pressKey('enter')
             .wait(3000)
             .expect(Selector('span').withText('Mempireo').exists).ok()
-            .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+            .click('div:nth-child(2) > div.flex.items-center.gap-5 > button[aria-label="Add/remove song"]')
             .wait(3000)
             .expect(Selector('svg[class="icon icon-remove-playlist undefined"]').exists).ok()
             //Add more songs to test shuffle function
@@ -107,7 +107,7 @@ fixture ('Tests Vocana')
                 .pressKey('enter')
                 .wait(3000)
                 .expect(Selector('span').withText('Cosmic Karma').exists).ok()
-                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+                .click('div:nth-child(2) > div.flex.items-center.gap-5 > button[aria-label="Add/remove song"]')
                 .wait(3000)
                 
                 //Reset search add (fourth song)
@@ -117,7 +117,7 @@ fixture ('Tests Vocana')
                 .pressKey('enter')
                 .wait(3000)
                 .expect(Selector('span').withText('Pink Tears in a Joyful Sunshine').exists).ok()
-                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+                .click('div:nth-child(2) > div.flex.items-center.gap-5 > button[aria-label="Add/remove song"]')
                 .wait(3000)
                 
                 //Reset search add (fifth song)
@@ -127,7 +127,7 @@ fixture ('Tests Vocana')
                 .pressKey('enter')
                 .wait(3000)
                 .expect(Selector('span').withText('Acting On A Hunch').exists).ok()
-                .click('div.modalComponent.visible > div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > div > div.body > div.mb-6.mt-4.flex.max-h-\\[25vh\\].flex-col.overflow-y-auto.\\!overflow-x-hidden.lg\\:max-h-\\[35vh\\].overflow-y-auto > div > div:nth-child(2) > div.flex.items-center.gap-5 > button')
+                .click('div:nth-child(2) > div.flex.items-center.gap-5 > button[aria-label="Add/remove song"]')
                 .wait(3000)
             //Close modal
             .click('div.customModal.modalWithoutImgProfile.\\!px-2.font-lato.sm\\:\\!px-6.lg\\:\\!px-10 > button[aria-label="Close"]')
