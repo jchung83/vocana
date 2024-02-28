@@ -134,10 +134,10 @@ fixture ('Tests Vocana')
             .expect(Selector('#rhap_current-time').withText("00:01").exists).ok()
             
             //Add to favorites
-            .click('button[aria-label="Add song to favorites"]')
-            .expect(Selector('svg[class="icon icon-active-heart ml-2 fill-current transition duration-300 group-hover:text-purple-39"]').exists).ok()
-            .click('button[aria-label="Add song to favorites"]')
-            .expect(Selector('svg[class="icon icon-hover-heart ml-2 fill-current transition duration-300 group-hover:text-purple-39"]').exists).ok()
+            .click('button[aria-label="Like song"]')
+            .expect(Selector('svg[class="icon icon-active-heart ml-3 fill-current transition duration-300 hover:text-turquoise"]').exists).ok()
+            .click('button[aria-label="Like song"]')
+            .expect(Selector('svg[class="icon icon-hover-heart ml-3 fill-current transition duration-300 hover:text-turquoise"]').exists).ok()
 
             //Add artist
             .click('button[aria-label="Add Artist"]')
