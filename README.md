@@ -38,8 +38,8 @@ Run with `admin-tests` as the test name.
 ### Account creation tests
 Run with `account-tests` as the test name.
 
-- [ ] Create an account as artist
-- [ ] Create an account as fan
+- [x] Create an account as artist
+- [x] Create an account as fan
 
 ## Extra features
 Inside tests you can use variable `datedTestText` to get a string with the current test name and current date, that you can use as input to generate a visual representation to check against with the `expect` method.
