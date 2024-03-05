@@ -153,3 +153,27 @@ fixture ('Tests Vocana')
             .wait(3000)
             ;
     });
+
+    test( "Compose message", async t => {
+    
+        let datedTestText = t.testRun.test.name + " " + fullDate;
+        let receiver = "artist"
+        //Actual test begins
+
+        await t
+        .click('a[aria-label="Navigate to Messages"]')
+        /*
+        ! Waiting for a fix, currently some conversations are doubled others are quadrupled
+        .expect(Selector('span').withExactText(receiver).count).eql(1)
+        */
+        .click(Selector('span').withExactText(receiver))
+        .wait(1000)
+        .setFilesToUpload('div:nth-child(2) > input[type=file]', ['./bart.png'])
+        .typeText(Selector('input[placeholder="Writes..."]'), datedTestText)
+        .pressKey('enter enter')
+        .setFilesToUpload('div:nth-child(2) > input[type=file]', ['./bart.png'])
+        .typeText(Selector('input[placeholder="Writes..."]'), datedTestText)
+        .doubleClick(Selector('button > svg.icon.icon-send-comments'))
+        .expect(Selector('p').withExactText(datedTestText).count).eql(2)
+        ;
+    });
