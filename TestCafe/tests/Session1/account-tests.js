@@ -17,14 +17,17 @@ fixture ('Tests Vocana')
     const day = String(dateToday.getDate()).padStart(2,'0');
     const month = String(dateToday.getMonth() + 1).padStart(2,'0');
     const year = dateToday.getFullYear();
-    const fullDate = [day, month, year].join('-');
+    const hour = dateToday.getHours();
+    const minutes = dateToday.getMinutes();
+    const time = [hour, minutes].join('');
+    const fullDate = [day, month, year, time].join('-');
 
 
 
     test( "FanCreation", async t => {
     
         let datedTestText = t.testRun.test.name + fullDate;
-        let email = datedTestText + "@" + datedTestText + ".com"
+        let email = datedTestText + "@fakedomain.com"
         //Actual test begins
 
         await t
@@ -100,7 +103,7 @@ fixture ('Tests Vocana')
     test( "ArtistCreation", async t => {
     
         let datedTestText = t.testRun.test.name + fullDate;
-        let email = datedTestText + "@" + datedTestText + ".com"
+        let email = datedTestText + "@fakedomain.com"
         //Actual test begins
 
         await t
