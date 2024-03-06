@@ -18,9 +18,9 @@ Current tests, in order, include:
 - [x] Going to **Profile** page and creating a post with text and image (you have 20secs to manually select the image file when prompted)
 - [x] Going to **Search** page and performing a search validating results are populating and afterwards trying to apply a filter
 - [x] Going to **Search** page, performing a search, selecting a song, verifyng song plays correctly and controls work
-- [x] Creating an managing **concerts** (save draft, edit, publish, unpublish, delete) the test also verifies if the concert appears in the correct list (either drafts or upcoming or neither)
-- [x] Creating a news draft
-- [x] Editing a news draft and delete the published new
+- [x] Creating an managing **Concerts** (save draft, edit, publish, unpublish, delete) the test also verifies if the concert appears in the correct list (either drafts or upcoming or neither)
+- [x] Creating a **News** draft
+- [x] Editing a **News** draft and delete the published new
 
 ### Fan account tests
 Run with `fan-tests` as the test name.
