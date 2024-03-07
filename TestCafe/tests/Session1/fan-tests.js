@@ -63,7 +63,7 @@ fixture ('Tests Vocana')
             //Verify icon changes to -           
             .expect(Selector('svg[class="icon icon-remove-playlist undefined"]').exists).ok()
 /*
-! WAITING FOR A FIX TO BE IMPLEMENTED BY DEV, UNCOMMENT THIS BLOCK TO TEST WHEN IT'S FIXED
+! Uncomment once issue #896 is ready for test
             //Remove from playlist
             .click(Selector('svg[class="icon icon-remove-playlist undefined"]'))
             //Verify - icon dissappears
@@ -171,6 +171,7 @@ fixture ('Tests Vocana')
         .setFilesToUpload('div:nth-child(2) > input[type=file]', ['./bart.png'])
         .typeText(Selector('input[placeholder="Writes..."]'), datedTestText)
         .pressKey('enter enter')
+        .wait(2000)
         .setFilesToUpload('div:nth-child(2) > input[type=file]', ['./bart.png'])
         .typeText(Selector('input[placeholder="Writes..."]'), datedTestText)
         .doubleClick(Selector('button > svg.icon.icon-send-comments'))

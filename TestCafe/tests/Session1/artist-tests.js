@@ -108,7 +108,7 @@ fixture ('Tests Vocana')
         //Apply filter
         await t
         .click('div[class="dropdown-container rounded flex items-center h-12 w-full cursor-pointer bg-cobalt-33 px-4 text-white"]')
-        .click(Selector('li[class="dropdown-option relative cursor-pointer bg-black px-4 py-2 font-normal text-white hover:bg-cobalt-33 focus:bg-cobalt-33"]').withText("Fan account"));
+        .click(Selector('li[class="dropdown-option relative cursor-pointer bg-black px-4 py-2 font-normal text-white hover:bg-cobalt-33 focus:bg-cobalt-33"]').withText("Profile"));
 
         //Validate
         await t

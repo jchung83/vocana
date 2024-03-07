@@ -164,10 +164,14 @@ fixture ('Tests Vocana')
             .expect(Selector('tr[class="cursor-pointer transition duration-75 odd:bg-cobalt-16 even:bg-cobalt-22 hover:bg-cobalt-33"]').count).eql(8)
 
             //Validate scrolling populates correctly
-            .click(Selector('#tabpanel-0 > div > div.h-full.max-h-\\[44vh\\].overflow-auto.lg\\:max-h-\\[62vh\\] > table > tbody > tr:nth-child(1) > td:nth-child(1) > div > span'))
+/*
+! Uncomment once issue #837 gets ready for test            
+            .click(Selector('#tabpanel-0 > div > div.max-h-\\[44vh\\].overflow-auto.overflow-auto > table > tbody > tr:nth-child(1)'))
             .wait(1000)
-//            .pressKey('end')
-//            .expect(Selector('tr[class="cursor-pointer transition duration-75 odd:bg-cobalt-16 even:bg-cobalt-22 hover:bg-cobalt-33"]').count).eql(16)
+            .pressKey('end')
+            .wait(3000)
+            .expect(Selector('tr[class="cursor-pointer transition duration-75 odd:bg-cobalt-16 even:bg-cobalt-22 hover:bg-cobalt-33"]').count).eql(16)
+*/
 
             //Test search box
             .typeText(Selector('#tabpanel-0 > div > div.flex.w-full.flex-row.items-center.justify-between.pb-5 > div.flex.gap-4 > div > input'), "anabel")
@@ -177,7 +181,7 @@ fixture ('Tests Vocana')
             .expect(Selector('td').withText("valprit01@hotmail.com").count).eql(0)
             .expect(Selector('td').withText("anabel_once@gmail.com").exists).ok()
             //Click first name check if message fields prepopulate
-            .click(Selector('#tabpanel-0 > div > div.h-full.max-h-\\[44vh\\].overflow-auto.lg\\:max-h-\\[62vh\\] > table > tbody > tr:nth-child(1)'))
+            .click(Selector('table > tbody > tr:nth-child(1)'))
             .click('body > main > div > div > div > div > div > div.mt-4.flex.size-full.gap-4 > div.relative.flex.h-full.min-h-\\[84vh\\].w-\\[25\\%\\].flex-col.items-center.rounded.bg-cobalt-22.p-3 > button:nth-child(5) > span')
             .expect(Selector('body > main > div > div > div > div > div > div.mt-4.flex.size-full.gap-4 > div.relative.flex.h-full.min-h-\\[84vh\\].w-\\[25\\%\\].flex-col.items-center.rounded.bg-cobalt-22.p-3 > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.undefined > div > div.body > form > div:nth-child(1) > div > div.relative > input[value="anabel once"]').exists).ok()
             .expect(Selector('body > main > div > div > div > div > div > div.mt-4.flex.size-full.gap-4 > div.relative.flex.h-full.min-h-\\[84vh\\].w-\\[25\\%\\].flex-col.items-center.rounded.bg-cobalt-22.p-3 > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.undefined > div > div.body > form > div:nth-child(2) > div > div.relative > input[value="anabel_once@gmail.com"]').exists).ok()
@@ -185,7 +189,7 @@ fixture ('Tests Vocana')
             .click('body > main > div > div > div > div > div > div.mt-4.flex.size-full.gap-4 > div.relative.flex.h-full.min-h-\\[84vh\\].w-\\[25\\%\\].flex-col.items-center.rounded.bg-cobalt-22.p-3 > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.undefined > button')
             //Switch to a different user and see if everything populates correctly
             .expect(Selector('td').withText('anabel_nueve@gamil.com').exists).ok()
-            .click(Selector('#tabpanel-0 > div > div.h-full.max-h-\\[44vh\\].overflow-auto.lg\\:max-h-\\[62vh\\] > table > tbody > tr:nth-child(2)'))
+            .click(Selector('table > tbody > tr:nth-child(2)'))
             .click('body > main > div > div > div > div > div > div.mt-4.flex.size-full.gap-4 > div.relative.flex.h-full.min-h-\\[84vh\\].w-\\[25\\%\\].flex-col.items-center.rounded.bg-cobalt-22.p-3 > button:nth-child(5) > span')
             .expect(Selector('body > main > div > div > div > div > div > div.mt-4.flex.size-full.gap-4 > div.relative.flex.h-full.min-h-\\[84vh\\].w-\\[25\\%\\].flex-col.items-center.rounded.bg-cobalt-22.p-3 > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.undefined > div > div.body > form > div:nth-child(1) > div > div.relative > input[value="anabel nueve"]').exists).ok()
             .expect(Selector('body > main > div > div > div > div > div > div.mt-4.flex.size-full.gap-4 > div.relative.flex.h-full.min-h-\\[84vh\\].w-\\[25\\%\\].flex-col.items-center.rounded.bg-cobalt-22.p-3 > div.modalComponent.visible > div.customModal.modalWithoutImgProfile.undefined > div > div.body > form > div:nth-child(2) > div > div.relative > input[value="anabel_nueve@gamil.com"]').exists).ok()
