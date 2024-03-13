@@ -60,7 +60,9 @@ fixture ('Tests Vocana')
         //Confirm Password
         .typeText(Selector('input[id="Password Confirm"]'), 'Aa.123456')
         //Go to next screen
+        .wait(1000)
         .click(Selector('button[aria-label="Continue"]'))
+        .wait(1000)
         //Fan or Artist
         .click('div.pageBaseWrapper > div > div > div > div > div > main > div.flex.gap-7 > button:nth-child(1)')
         .click(Selector('button[aria-label="Continue"]'))
@@ -96,7 +98,11 @@ fixture ('Tests Vocana')
         .typeText('input[name="Address"]', "Address " + fullDate)
         .click('label[for="setDefaultPayment"]')
         .click(Selector('span').withText("Continue"))
-        .wait(5000)
+        .wait(10000)
+        .typeText(Selector("#email"), email)
+        .typeText(Selector("#password"), 'Aa.123456')
+        .click(Selector('button[aria-label="Log In"]'))
+        .expect(Selector('span').withExactText("Home").exists).ok()
         ;
     })
 
@@ -136,7 +142,9 @@ fixture ('Tests Vocana')
         //Confirm Password
         .typeText(Selector('input[id="Password Confirm"]'), 'Aa.123456')
         //Go to next screen
+        .wait(1000)
         .click(Selector('button[aria-label="Continue"]'))
+        .wait(1000)
         //Fan or Artist
         .click('div.pageBaseWrapper > div > div > div > div > div > main > div.flex.gap-7 > button:nth-child(2)')
         .click(Selector('button[aria-label="Continue"]'))
@@ -172,6 +180,10 @@ fixture ('Tests Vocana')
         .typeText('input[name="Address"]', "Address " + fullDate)
         .click('label[for="setDefaultPayment"]')
         .click(Selector('span').withText("Continue"))
-        .wait(5000)
+        .wait(10000)
+        .typeText(Selector("#email"), email)
+        .typeText(Selector("#password"), 'Aa.123456')
+        .click(Selector('button[aria-label="Log In"]'))
+        .expect(Selector('span').withExactText("Home").exists).ok()
         ;
     })
