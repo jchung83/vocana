@@ -228,15 +228,15 @@ fixture ('Tests Vocana')
             //Title
             .typeText('#title', datedTestText)
             //Imagen principal
-            .setFilesToUpload('input[name="concert-image"]', ['./bart.png'])
+            .setFilesToUpload('div:nth-child(1) > div > input[accept="image/*"]', ['./bart.png'])
             .wait(1000)
             //Banner
-            .setFilesToUpload('input[name="concert-banner"]', ['./testbanner2.JPEG'])
+            .setFilesToUpload('div:nth-child(1) > div > input[accept="image/*"]', ['./testbanner2.JPEG'])
             .wait(1000)
             //Date
             .click('#concert-date-input')
-            .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(2) > div > div > span > div > div > div.react-calendar__navigation > button.react-calendar__navigation__arrow.react-calendar__navigation__next-button')
-            .click('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(2) > div > div > span > div > div > div.react-calendar__viewContainer > div > div > div > div.react-calendar__month-view__days > button:nth-child(19)')
+            .click('.react-calendar__navigation__arrow.react-calendar__navigation__next-button')
+            .click('.react-calendar__month-view__days > button:nth-child(23)')
             //Start time  
             .typeText('#start-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__hour', "10")
             .typeText('#start-time > div > div > input.react-time-picker__inputGroup__input.react-time-picker__inputGroup__minute', "30")
@@ -248,26 +248,30 @@ fixture ('Tests Vocana')
             //Precio  
             .typeText('#price', "110.55")
             //Ticket URL  
-            .typeText('#ticketUrl', "https://google.com")
+            .typeText('#ticketUrl', "google.com")
             //Venue name  
             .typeText('#venueName', "Test Venue")
             //Venue address
             .typeText('#venueAddress', "Test Address")
             //Country
-            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select'))
-            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').find('option').withText('United States'))
-            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(9) > div > select').value).eql('232')
+            .click(Selector('select[id="countries"]'))
+            .click(Selector('select[id="countries"]').find('option').withText('United States'))
+            .expect(Selector('select[id="countries"]').value).eql('232')
             //State  
-            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select'))
-            .click(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').find('option').withText('Colorado'))
-            .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(10) > div > select').value).eql('7')
+            .click(Selector('select[id="states"]'))
+            .click(Selector('select[id="states"]').find('option').withText('Colorado'))
+            .expect(Selector('select[id="states"]').value).eql('7')
+            //City
+            .typeText('input[placeholder="city"]', "Denver")
+            //Zipcode
+            .typeText('input[placeholder="zipCode"]', "80014")
             //Venue link
-            .typeText('body > main > div.pageBaseWrapper > div > div > div > div > div:nth-child(3) > div.grid.grid-cols-12 > div:nth-child(11) > div > div.input.flex.items-center.p-3 > input', "https://google.com")
+            .typeText('input[placeholder="link"]', "https://google.com")
             //Info
             .typeText('#text-area-concert-info', "Concert info test")
             //Save draft
             .click('button[aria-label="saveDraft"]')
-            .wait(3000)
+            .wait(6000)
             //Now let's check that concert exists
             .click('a[aria-label="Navigate to Concerts"]')   
             .expect(Selector('body > main > div.pageBaseWrapper > div > div > div > div > section:nth-child(2) > button:nth-child(2) > div > span.flex > div.ml-5.text-left > p.font-body-extrabold').withText(datedTestText).exists).ok()
