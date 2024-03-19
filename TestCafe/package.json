@@ -1,12 +1,13 @@
 {
     "scripts": {
         "testDemo": "testcafe chrome tests/Session1/firstTest.js",
-        "artist-tests": "testcafe chrome tests/Session1/artist-tests.js --debug-mode",
-        "account-tests": "testcafe chrome tests/Session1/account-tests.js --debug-mode",
-        "fan-tests": "testcafe chrome tests/Session1/fan-tests.js --debug-mode",
-        "admin-tests": "testcafe chrome tests/Session1/admin-tests.js --debug-mode"},
-
+        "artist-tests": "testcafe chrome vocana-tests -r spec,html:TestResults/results.html --video TestResults/screen-captures --video-options pathPattern=${DATE}_${TIME}/${BROWSER}/${TEST}.mp4,failedOnly=true -s path=TestResults/screen-captures,pathPattern=${DATE}_${TIME}/${BROWSER}/${TEST}.png,takeOnFails=true"
+    },
     "dependencies": {
-        "testcafe": "3.5.0"
+        "@ffmpeg-installer/ffmpeg": "^1.1.0",
+        "testcafe": "3.5.0",
+        "testcafe-reporter-html": "^1.4.6",
+        "testcafe-reporter-teamcity": "^1.0.12",
+        "testcafe-reporter-tesults": "^1.2.0"
     }
 }
