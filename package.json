@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "testDemo": "testcafe chrome tests/Session1/firstTest.js",
+        "vocana-tests": "testcafe chrome vocana-tests.js -r spec,html:TestResults/results.html --video TestResults/screen-captures --video-options pathPattern=${DATE}_${TIME}/${BROWSER}/${TEST}.mp4,failedOnly=true -s path=TestResults/screen-captures,pathPattern=${DATE}_${TIME}/${BROWSER}/${TEST}.png,takeOnFails=true"
+    },
+    "dependencies": {
+        "@ffmpeg-installer/ffmpeg": "^1.1.0",
+        "testcafe": "3.5.0",
+        "testcafe-reporter-html": "^1.4.6",
+        "testcafe-reporter-teamcity": "^1.0.12",
+        "testcafe-reporter-tesults": "^1.2.0"
+    }
+}
