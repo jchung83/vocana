@@ -132,3 +132,19 @@ export class AdminHomePage {
         .expect(this.menuLogout.exists).ok()
     }
 }
+
+export class ArtistProfilePage {
+    constructor () {
+
+        //Header
+        this.editProfileButton = Selector('button[aria-label="Edit Profile"]');
+        this.carouselImg0 = Selector('div[data-index="0"]');
+        this.carouselImg0 = Selector('div[data-index="1"]');
+        this.profileCarouselNext = Selector('#imgCarrousel > div > div.slick-arrow.slick-next > button');
+        this.profileCarouselPrev = Selector('#imgCarrousel > div > div.slick-arrow.slick-prev > button');
+        
+
+        this.createPost = span.withText('Create Post');
+
+    }
+}
